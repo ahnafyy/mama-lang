@@ -28,7 +28,7 @@ Create a new file (boltesi.mama)
 ## Run 🚀
 
 ```
-mama-lang boltesi.mama
+mama boltesi.mama
 ```
 
 ## Output 🖨️
