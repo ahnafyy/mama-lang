@@ -15,7 +15,7 @@ Feel free to open up PR(s) and contribute! 😄
 ## Installation 💻
 
 ```
-npm install -g mamalang
+npm install -g mama-lang
 ```
 
 ## Usage 📝
@@ -28,7 +28,7 @@ Create a new file (boltesi.mama)
 ## Run 🚀
 
 ```
-mamalang boltesi.mama
+mama-lang boltesi.mama
 ```
 
 ## Output 🖨️
@@ -79,7 +79,7 @@ bol toh mama("Shob miliya koto ghonta kamla khatesi amra hoilo = " + shobMilayaK
 
 ## Conditionals 🔄
 
-Mamalang supports the if-else-if ladder construct, `jodi mama` block will execute if the condition is `haw mama`, otherwise one of the subsequently added `nah hoile mama` blocks will execute if their respective condition is `haw mama`, and the `akdom e nah hoile` block will eventually execute if all of the above conditions are `nah mama`.
+mama-lang supports the if-else-if ladder construct, `jodi mama` block will execute if the condition is `haw mama`, otherwise one of the subsequently added `nah hoile mama` blocks will execute if their respective condition is `haw mama`, and the `akdom e nah hoile` block will eventually execute if all of the above conditions are `nah mama`.
 
 ```
 jodi mama (temperature > 30) {
