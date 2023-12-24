@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Mama Playground 🚀</title>
+        <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 10px;
+            border-top: 10px solid #008080;
+            border-bottom: 10px solid #008080;
+        }
+
+        textarea,
+        button,
+        #output {
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid #000;
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 20px);
+            display: block;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #008080;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #005f5f;
+        }
+
+        #output {
+            background-color: #fff;
+            padding: 10px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+
+            textarea,
+            button,
+            #output {
+                width: calc(100% - 10px);
+            }
+
+            textarea {
+                height: 150px;
+            }
+        }
+
+        #examples {
+            border-top: 3px solid #008080;
+            /* Adds a thematic border above the examples section */
+            padding-top: 20px;
+            /* Adds spacing above the examples */
+            margin-top: 20px;
+            /* Adds spacing between the playground and examples */
+        }
+
+        #examples h2 {
+            color: #008080;
+            margin-bottom: 10px;
+        }
+
+        #examples pre {
+            background-color: #e0e0e0;
+            border-left: 5px solid #008080;
+            padding: 10px;
+            overflow: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        @media screen and (max-width: 600px) {
+            #examples {
+                padding: 5px;
+            }
+
+            #examples pre {
+                border-left: 3px solid #008080;
+                padding: 5px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <textarea id="code">mama aida hoilo oi = "ki re";bol toh mama (oi);
+        </textarea> <button onclick="runCode()">Run Code</button>
+        <div id="output"></div>
+        <div id="examples">
+            <h2>Examples</h2>
+            <pre>
+mama aida hoilo day = "Sunday";
+mama aida hoilo temperature = 25;
+mama aida hoilo isSunny = haw mama;
+mama aida hoilo counter = 0;
+
+bol toh mama ("Hello World");
+
+mama aida hoilo manushJon = 5;
+mama aida hoilo koiGhontaKoraLagbe = 8;
+mama aida hoilo shobMilayaKotoKhonLagbe = manushJon * koiGhontaKoraLagbe;
+bol toh mama("Shob miliya koto ghonta kamla khatesi amra hoilo = " + shobMilayaKotoKhonLagbe);
+
+jodi mama (temperature > 30) {
+  bol toh mama ("Gorom lagtese mama, AC chalao mama!");
+} nah hoile mama (temperature < 20) {
+  bol toh mama ("Thanda lagtese mama, sweater porum mama!");
+} akdom e nah hoile {
+  bol toh mama ("Aajke weather besh comfortable, mama!");
+}
+
+mama aida hoilo a = 0;
+jotokhon porjonto mama (a < 10) {
+  a += 1;
+  jodi mama (a == 5) {
+    bol toh mama("loop er bhitor theke boltesi mama ", a);
+    tarpor er tah dekh mama;
+  }
+  jodi mama (a == 6) {
+    thamis mama;
+  }
+  bol toh mama(a);
+}
+bol toh mama("done");
+            </pre>
+        </div>
+
+        <script>
+        function runCode() {
+            // Get the output element and clear it
+            var output = document.getElementById('output');
+            output.textContent = '';
+            // Get the code from the textarea
+            var code = document.getElementById('code').value;
+
+
+            const translations = {
+                'mama aida hoilo': 'let', // Variable declaration
+                'bol toh mama': 'console.log', // Print to console
+                'kisuina mama': 'null', // Null value
+                'haw mama': 'true', // Boolean true value
+                'nah mama': 'false', // Boolean false value
+                'jodi mama': 'if', // If condition
+                'nah hoile mama': 'else if', // Else if condition
+                'akdom e nah hoile': 'else', // Else condition
+                'jotokhon porjonto mama': 'while', // While loop
+                'thamis mama': 'break', // Break statement
+                'tarpor er tah dekh': 'continue' // Continue statement
+                // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+            };
+
+            const translateKeywordToJS = (keyword) => {
+                return translations[keyword] || keyword;
+            };
+
+            const convertToJS = (sourceCode) => {
+                Object.keys(translations).forEach(keyword => {
+                    // Use a regex to match whole words only to prevent partial replacements
+                    const regex = new RegExp(`\\b${keyword}\\b`, 'g');
+                    sourceCode = sourceCode.replace(regex, translations[keyword]);
+                });
+                return sourceCode;
+            };
+
+            // Convert the code to JavaScript
+            code = convertToJS(code);
+
+            // Run the code and capture the output
+            var output;
+            try {
+                output = eval(code);
+            } catch (error) {
+                output = error;
+            }
+
+            // Display the output
+            console.log = function (message) {
+                // Get the output element
+                var output = document.getElementById('output');
+
+                // Append the message to the output element
+                output.textContent += message + '\n';
+            };
+        }
+    </script>
+    </body>
+
+</html>

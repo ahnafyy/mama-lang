@@ -67,7 +67,7 @@ Numbers and strings are like other languages. Null values can be denoted using `
 Use `bol toh mama` to print anything to the console.
 
 ```
-bol toh mama "Hello World";
+bol toh mama ("Hello World");
 ```
 
 ```
@@ -83,11 +83,11 @@ mama-lang supports the if-else-if ladder construct, `jodi mama` block will execu
 
 ```
 jodi mama (temperature > 30) {
-  bol toh mama "Gorom lagtese mama, AC chalao mama!";
+  bol toh mama ("Gorom lagtese mama, AC chalao mama!");
 } nah hoile mama (temperature < 20) {
-  bol toh mama "Thanda lagtese mama, sweater porum mama!";
+  bol toh mama ("Thanda lagtese mama, sweater porum mama!");
 } akdom e nah hoile {
-  bol toh mama "Aajke weather besh comfortable, mama!";
+  bol toh mama ("Aajke weather besh comfortable, mama!");
 }
 ```
 
