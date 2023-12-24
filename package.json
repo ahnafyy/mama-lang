@@ -1,0 +1,29 @@
+{
+  "name": "mama-lang",
+  "version": "0.0.1",
+  "description": "mama aida akta heavvyyy joss akta programming language mama",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahnafyy/mama-lang.git"
+  },
+  "keywords": [
+    "javascript",
+    "programming-language",
+    "parser",
+    "interpreter",
+    "bengali"
+  ],
+  "author": "Ahnaf Prio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ahnafyy/mama-lang/issues"
+  },
+  "homepage": "https://github.com/ahnafyy/mama-lang#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
