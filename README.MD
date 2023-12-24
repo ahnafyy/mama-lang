@@ -43,11 +43,10 @@ kire mama!
 Variables can be declared using `mama aida hoilo`;
 
 ```
- mama aida hoilo a = 10;
- mama aida hoilo b = "two";
- mama aida hoilo c = 15;
-  a = a + 1;
-  b = 21;
+mama aida hoilo day = "Sunday";
+mama aida hoilo temperature = 25;
+mama aida hoilo isSunny = haw mama;
+mama aida hoilo counter = 0;
 ```
 
 ### Types 🔠
@@ -83,14 +82,13 @@ bol toh mama("Shob miliya koto ghonta kamla khatesi amra hoilo = " + shobMilayaK
 Mamalang supports the if-else-if ladder construct, `jodi mama` block will execute if the condition is `haw mama`, otherwise one of the subsequently added `nah hoile mama` blocks will execute if their respective condition is `haw mama`, and the `akdom e nah hoile` block will eventually execute if all of the above conditions are `nah mama`.
 
 ```
-  mama aida hoilo a = 10;
-  jodi mama (a < 20) {
-    bol toh mama("a 20 er theke kom asey, mama!");
-  } nah hoile mama( a < 25 ) {
-    bol toh mama("a 25 er theke kom asey, mama!");
-  } akdom e nah hoile {
-    bol toh mama("a 25 er theke beshi bah shoman hoibo mama");
-  }
+jodi mama (temperature > 30) {
+  bol toh mama "Gorom lagtese mama, AC chalao mama!";
+} nah hoile mama (temperature < 20) {
+  bol toh mama "Thanda lagtese mama, sweater porum mama!";
+} akdom e nah hoile {
+  bol toh mama "Aajke weather besh comfortable, mama!";
+}
 ```
 
 ## Loops 🔁

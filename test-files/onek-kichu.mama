@@ -1,0 +1,41 @@
+// MamaLang script: something.mama
+
+// Declare some variables
+mama aida hoilo day = "Sunday";
+mama aida hoilo temperature = 25;
+mama aida hoilo isSunny = haw mama;
+mama aida hoilo counter = 0;
+
+// Print a greeting
+bol toh mama "Shubho shokal, mama! Aajker din ki? - " + day;
+
+// Check weather conditions
+jodi mama (temperature > 30) {
+  bol toh mama "Gorom lagtese mama, AC chalao!";
+} nah hoile mama (temperature < 20) {
+  bol toh mama "Thanda lagtese mama, sweater poro!";
+} akdom e nah hoile {
+  bol toh mama "Aajke weather besh comfortable, mama!";
+}
+
+// Is it sunny?
+jodi mama (isSunny == haw mama) {
+  bol toh mama "Rod elomelo kore, picnic jabo mama?";
+} akdom e nah hoile {
+  bol toh mama "Mega shuru hoise, indoor games kheli mama!";
+}
+
+// Simple loop example
+bol toh mama "Countdown shuru korlam:";
+jotokhon porjonto mama (counter < 5) {
+  bol toh mama(5 - counter + "...");
+  counter += 1;
+  jodi mama (counter == 3) {
+    bol toh mama "Arey half-way reach korsi mama!";
+    tarpor er tah dekh mama;
+  }
+}
+bol toh mama "Shesh!";
+
+// End of script
+bol toh mama "MamaLang script shesh hoilo. Goodbye!";

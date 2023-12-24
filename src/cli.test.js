@@ -1,65 +1,78 @@
 const fs = require('fs');
 const {
-  tokenize,
   createKeywordsRegex,
   convertToJS,
-  runMamaLang
+  runMamaLang,
+  translateKeywordToJS
 } = require('./cli');
 
 describe('MamaLang Translator', () => {
-  describe('createKeywordsRegex', () => {
-    it('should create a regex pattern that matches keywords', () => {
-      const translations = {
-        'mama aida hoilo': 'let',
-        'bol toh mama': 'console.log'
-      };
-      const regex = createKeywordsRegex(translations);
-      expect(regex.test('mama aida hoilo')).toBe(true);
-      expect(regex.test('bol toh mama')).toBe(true);
-      expect(regex.test('kisuina mama')).toBe(false);
-    });
+  it('should create a regex pattern that matches keywords', () => {
+    const regex = createKeywordsRegex();
+    expect(regex.test('mama aida hoilo')).toBe(true);
+    expect(regex.test('bol toh mama')).toBe(true);
+    expect(regex.test('blah blah')).toBe(false);
   });
 
-  describe('translateKeywordToJS', () => {
-    it('should translate a MamaLang keyword to JavaScript', () => {
-      expect(translateKeywordToJS('mama aida hoilo')).toBe('let');
-      expect(translateKeywordToJS('bol toh mama')).toBe('console.log');
-      expect(translateKeywordToJS('kisuina mama')).toBe('null');
-      expect(translateKeywordToJS('nonexistent')).toBe('nonexistent');
-    });
+  it('should translate a MamaLang keyword to JavaScript', () => {
+    expect(translateKeywordToJS('mama aida hoilo')).toBe('let');
+    expect(translateKeywordToJS('bol toh mama')).toBe('console.log');
+    expect(translateKeywordToJS('kisuina mama')).toBe('null');
+    expect(translateKeywordToJS('nonexistent')).toBe('nonexistent');
   });
 
-  describe('tokenize', () => {
-    it('should tokenize MamaLang source code', () => {
-      const sourceCode = 'mama aida hoilo bol toh mama';
-      const tokens = tokenize(sourceCode);
-      expect(tokens).toEqual([
-        { value: 'mama aida hoilo' },
-        { value: 'bol toh mama' }
-      ]);
-    });
+  it('should convert MamaLang code to JavaScript', () => {
+    const sourceCode = 'mama aida hoilo a = 5; bol toh mama(a);';
+    const jsCode = convertToJS(sourceCode);
+    expect(jsCode).toBe('let a = 5; console.log(a);');
   });
 
-  describe('convertToJS', () => {
-    it('should convert MamaLang code to JavaScript', () => {
-      const sourceCode = 'mama aida hoilo bol toh mama';
-      const jsCode = convertToJS(sourceCode);
-      expect(jsCode).toBe('let console.log');
-    });
+  it('should execute MamaLang code from a file', () => {
+    const testFileName = 'test-mama-code.mama'; // Path to the test file
+    const testCode = 'mama aida hoilo a = 5; bol toh mama(a);';
+    const expectedJsCode = 'let a = 5; console.log(a);'; // Expected JavaScript code
+
+    // Write test code to the file
+    fs.writeFileSync(testFileName, testCode, 'utf8');
+
+    // Mock eval to verify execution
+    const evalSpy = jest.spyOn(global, 'eval');
+
+    // Run the function
+    runMamaLang(testFileName);
+
+    // Verify that eval was called with the correct JavaScript code
+    expect(evalSpy).toHaveBeenCalledWith(expectedJsCode);
+
+    // Clean up: remove the test file and restore eval
+    fs.unlinkSync(testFileName);
+    evalSpy.mockRestore();
   });
 
-  describe('runMamaLang', () => {
-    it('should execute MamaLang code from a file', () => {
-      const testFileName = 'test-mama-code.mama'; // Create a test file with MamaLang code
-      fs.writeFileSync(testFileName, 'mama aida hoilo bol toh mama', 'utf8');
+    it('should correctly translate complex MamaLang expressions', () => {
+    const sourceCode = 'mama aida hoilo x = 10; jodi mama (x > 5) { bol toh mama("x is greater than 5"); }';
+    const jsCode = convertToJS(sourceCode);
+    const expectedJsCode = 'let x = 10; if (x > 5) { console.log("x is greater than 5"); }';
+    expect(jsCode).toBe(expectedJsCode);
+  });
 
-      const spy = jest.spyOn(console, 'log').mockImplementation(() => {});
-      runMamaLang(testFileName);
+  it('should handle control flow structures in MamaLang', () => {
+    const sourceCode = 'jodi mama (condition) { bol toh mama("True"); } akdom e nah hoile { bol toh mama("False"); }';
+    const jsCode = convertToJS(sourceCode);
+    const expectedJsCode = 'if (condition) { console.log("True"); } else { console.log("False"); }';
+    expect(jsCode).toBe(expectedJsCode);
+  });
 
-      expect(spy).toHaveBeenCalledWith('let console.log');
+  it('should not translate keywords embedded in other words', () => {
+    const sourceCode = 'text containingmama aida hoilo not a keyword';
+    const jsCode = convertToJS(sourceCode);
+    expect(jsCode).toBe('text containingmama aida hoilo not a keyword');
+  });
 
-      fs.unlinkSync(testFileName); // Clean up the test file
-      spy.mockRestore();
-    });
+  it('should correctly handle mixed content', () => {
+    const sourceCode = 'This is a comment. mama aida hoilo x = 5; // This is another comment';
+    const jsCode = convertToJS(sourceCode);
+    const expectedJsCode = 'This is a comment. let x = 5; // This is another comment';
+    expect(jsCode).toBe(expectedJsCode);
   });
 });
