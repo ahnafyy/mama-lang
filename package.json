@@ -1,10 +1,13 @@
 {
   "name": "mama-lang",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "mama aida akta heavvyyy joss akta programming language mama",
   "main": "index.js",
   "scripts": {
     "test": "jest"
+  },
+  "bin": {
+    "mama": "./src/cli.js"
   },
   "repository": {
     "type": "git",
