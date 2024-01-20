@@ -26,7 +26,7 @@ npm install -g mama-lang
 Create a new file (boltesi.mama)
 
 ```
-bol toh mama ("Hello mama");
+bol toh mama ("kire mama!");
 ```
 
 ## Run 🚀
