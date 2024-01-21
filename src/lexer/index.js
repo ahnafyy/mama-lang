@@ -12,8 +12,10 @@ const TokenType = {
     DEDENT: 'DEDENT',
     EOF: 'EOF',
     // TO-DO: Figure out what to do with unknown tokens
-    UNKNOWN: 'UNKNOWN'
+    UNKNOWN: 'UNKNOWN',
     // TO-DO: We need to add functions and objects and call backs and all that jazz but for now lets just get the basics down
+    FUNCTION_DECLARATION: 'FUNCTION_DECLARATION',
+    RETURN_STATEMENT: 'RETURN_STATEMENT'
 };
 
 const keywords = new Map([
@@ -29,8 +31,10 @@ const keywords = new Map([
     ['akdom e nah hoile', TokenType.KEYWORD],  // Else condition
     ['jotokhon porjonto mama', TokenType.KEYWORD], // While loop
     ['thamis mama', TokenType.KEYWORD],        // Break statement
-    ['tarpor er tah dekh', TokenType.KEYWORD]  // Continue statement
+    ['tarpor er tah dekh', TokenType.KEYWORD],  // Continue statement
     // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+    ['mama kam da hoilo', TokenType.KEYWORD], // Function declaration
+    ['de toh mama', TokenType.KEYWORD] // Return statement
 ]);
 
 /**
@@ -146,4 +150,3 @@ module.exports = {
     TokenType,
     keywords
 };
-

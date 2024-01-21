@@ -12,9 +12,11 @@ const translations = {
     'akdom e nah hoile': 'else', // Else condition
     'jotokhon porjonto mama': 'while', // While loop
     'thamis mama': 'break', // Break statement
-    'tarpor er tah dekh': 'continue' // Continue statement
+    'tarpor er tah dekh': 'continue', // Continue statement
     // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
-};
+    'mama kam da hoilo': 'function', // Function declaration
+    'de toh mama' : 'return' // Return statement
+  };
 
 const createKeywordsRegex = () => {
   const keywords = Object.keys(translations).map(keyword =>

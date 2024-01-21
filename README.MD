@@ -115,3 +115,29 @@ Statements inside `jotokhon porjonto mama` blocks are executed as long as a spec
   }
   bol toh mama("done");
 ```
+
+## Functions ⚙️
+You can define a function using the `mama kam da hoilo` syntax, followed by the function name and parameters in parentheses. The function body is enclosed in curly braces.
+
+```
+mama kam da hoilo jog(a,b){
+    de toh mama (a+b);
+}
+```
+In this example, a function named jog is defined with two parameters, a and b. The function body adds these parameters and returns the result using de toh mama.
+
+```
+bol toh mama(jog(5,7))
+```
+
+### Function Output 🔄
+Functions in Mama Lang can return values using the de toh mama statement. The returned value can be assigned to a variable or used directly in expressions.
+```
+mama kam da hoilo multiply(x, y) {
+    de toh mama (x * y);
+}
+
+mama aida hoilo result = multiply(3, 4);
+bol toh mama("The result is: " + result);
+```
+In this example, the multiply function returns the product of its parameters, and the result is assigned to the result variable and printed.
