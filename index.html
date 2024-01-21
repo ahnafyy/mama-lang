@@ -149,6 +149,13 @@ jotokhon porjonto mama (a < 10) {
   bol toh mama(a);
 }
 bol toh mama("done");
+
+mama kam da hoilo multiply(x, y) {
+    de toh mama (x * y);
+}
+
+mama aida hoilo result = multiply(3, 4);
+bol toh mama("The result is: " + result);
             </pre>
         </div>
 
@@ -172,8 +179,10 @@ bol toh mama("done");
                 'akdom e nah hoile': 'else', // Else condition
                 'jotokhon porjonto mama': 'while', // While loop
                 'thamis mama': 'break', // Break statement
-                'tarpor er tah dekh': 'continue' // Continue statement
+                'tarpor er tah dekh': 'continue', // Continue statement
                 // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+                'mama kam da hoilo' : 'function', // Function declaration
+                'de toh mama' : 'return', // Return statement
             };
 
             const translateKeywordToJS = (keyword) => {
