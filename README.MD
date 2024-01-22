@@ -5,10 +5,10 @@
 
 I grew up in Dhaka, Bangladesh 🇧🇩, where "Mama" 🗣️, which literally translates to your mom's brother, is often used by friends as a form of endearment. The closest comparison I can find is how some people would use the word "homie" 🤝 in the US. I spent countless days and nights ☕🌙, sipping tea in the stands of Abahani Field in Dhanmondi 4 or at Paribagh with friends when I was in high school 🏫👥. During these gatherings, if we had kept a tally, I believe collectively we must have uttered the word `mama` well over a hundred times.
 
-So when I saw this: bhai-lang https://github.com/DulLabs/bhai-lang 💡, I was inspired to write my own implementation! 
+So when I saw this: bhai-lang https://github.com/DulLabs/bhai-lang 💡, I was inspired to write my own implementation!
 To start with right now we just convert `.mama` files to `.js` and then run them with `node` and so anything that you could do in javascript land you can do it in mama lang.
 
-I am however playing around with the idea of making its own lexer, interpreter and parser so it can just be its own thing! 
+I am however playing around with the idea of making its own lexer, interpreter and parser so it can just be its own thing!
 
 Feel free to open up PR(s) and contribute! 😄
 
@@ -23,6 +23,7 @@ npm install -g mama-lang
 ```
 
 ## Usage 📝
+
 Create a new file (boltesi.mama)
 
 ```
@@ -44,6 +45,7 @@ kire mama!
 ## Documentation 📚
 
 ### Variables 📊
+
 Variables can be declared using `mama aida hoilo`;
 
 ```
@@ -54,6 +56,7 @@ mama aida hoilo counter = 0;
 ```
 
 ### Types 🔠
+
 Numbers and strings are like other languages. Null values can be denoted using `kisuina mama`. `haw mama` and `nah mama` are the boolean values.
 
 ```
@@ -99,7 +102,6 @@ jodi mama (temperature > 30) {
 
 Statements inside `jotokhon porjonto mama` blocks are executed as long as a specified condition evaluates to `haw mama`. If the condition becomes `nah mama`, the statement within the loop stops executing and control passes to the statement following the loop. Use `thamis mama` to break the loop and `tarpor er tah dekh` mama to continue within the loop.
 
-
 ```
   mama aida hoilo a = 0;
   jotokhon porjonto mama (a < 10) {
@@ -117,6 +119,7 @@ Statements inside `jotokhon porjonto mama` blocks are executed as long as a spec
 ```
 
 ## Functions ⚙️
+
 You can define a function using the `mama kam da hoilo` syntax, followed by the function name and parameters in parentheses. The function body is enclosed in curly braces.
 
 ```
@@ -124,6 +127,7 @@ mama kam da hoilo jog(a,b){
     de toh mama (a+b);
 }
 ```
+
 In this example, a function named jog is defined with two parameters, a and b. The function body adds these parameters and returns the result using de toh mama.
 
 ```
@@ -131,7 +135,9 @@ bol toh mama(jog(5,7))
 ```
 
 ### Function Output 🔄
+
 Functions in Mama Lang can return values using the de toh mama statement. The returned value can be assigned to a variable or used directly in expressions.
+
 ```
 mama kam da hoilo multiply(x, y) {
     de toh mama (x * y);
@@ -140,4 +146,5 @@ mama kam da hoilo multiply(x, y) {
 mama aida hoilo result = multiply(3, 4);
 bol toh mama("The result is: " + result);
 ```
+
 In this example, the multiply function returns the product of its parameters, and the result is assigned to the result variable and printed.

@@ -1,121 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Mama Playground 🚀</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
 
-    <head>
-        <title>Mama Playground 🚀</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <style>
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
-        }
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 10px;
+        border-top: 10px solid #008080;
+        border-bottom: 10px solid #008080;
+      }
 
+      textarea,
+      button,
+      #output {
+        font-family: 'Courier New', Courier, monospace;
+        border: 2px solid #000;
+        margin: 10px 0;
+        padding: 10px;
+        width: calc(100% - 20px);
+        display: block;
+      }
+
+      textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      button {
+        background-color: #008080;
+        color: #fff;
+        padding: 5px 10px;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      button:hover {
+        background-color: #005f5f;
+      }
+
+      #output {
+        background-color: #fff;
+        padding: 10px;
+        white-space: pre-wrap;
+        overflow-x: auto;
+      }
+
+      @media screen and (max-width: 600px) {
         body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 10px;
-            border-top: 10px solid #008080;
-            border-bottom: 10px solid #008080;
+          padding: 5px;
         }
 
         textarea,
         button,
         #output {
-            font-family: 'Courier New', Courier, monospace;
-            border: 2px solid #000;
-            margin: 10px 0;
-            padding: 10px;
-            width: calc(100% - 20px);
-            display: block;
+          width: calc(100% - 10px);
         }
 
         textarea {
-            height: 150px;
-            resize: vertical;
+          height: 150px;
         }
+      }
 
-        button {
-            background-color: #008080;
-            color: #fff;
-            padding: 5px 10px;
-            cursor: pointer;
-            display: inline-block;
-        }
+      #examples {
+        border-top: 3px solid #008080;
+        /* Adds a thematic border above the examples section */
+        padding-top: 20px;
+        /* Adds spacing above the examples */
+        margin-top: 20px;
+        /* Adds spacing between the playground and examples */
+      }
 
-        button:hover {
-            background-color: #005f5f;
-        }
+      #examples h2 {
+        color: #008080;
+        margin-bottom: 10px;
+      }
 
-        #output {
-            background-color: #fff;
-            padding: 10px;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
+      #examples pre {
+        background-color: #e0e0e0;
+        border-left: 5px solid #008080;
+        padding: 10px;
+        overflow: auto;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
 
-        @media screen and (max-width: 600px) {
-            body {
-                padding: 5px;
-            }
-
-            textarea,
-            button,
-            #output {
-                width: calc(100% - 10px);
-            }
-
-            textarea {
-                height: 150px;
-            }
-        }
-
+      @media screen and (max-width: 600px) {
         #examples {
-            border-top: 3px solid #008080;
-            /* Adds a thematic border above the examples section */
-            padding-top: 20px;
-            /* Adds spacing above the examples */
-            margin-top: 20px;
-            /* Adds spacing between the playground and examples */
-        }
-
-        #examples h2 {
-            color: #008080;
-            margin-bottom: 10px;
+          padding: 5px;
         }
 
         #examples pre {
-            background-color: #e0e0e0;
-            border-left: 5px solid #008080;
-            padding: 10px;
-            overflow: auto;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            word-break: break-word;
+          border-left: 3px solid #008080;
+          padding: 5px;
         }
-
-        @media screen and (max-width: 600px) {
-            #examples {
-                padding: 5px;
-            }
-
-            #examples pre {
-                border-left: 3px solid #008080;
-                padding: 5px;
-            }
-        }
+      }
     </style>
-    </head>
+  </head>
 
-    <body>
-        <textarea id="code">mama aida hoilo oi = "ki re";bol toh mama (oi);
-        </textarea> <button onclick="runCode()">Run Code</button>
-        <div id="output"></div>
-        <div id="examples">
-            <h2>Examples</h2>
-            <pre>
+  <body>
+    <textarea id="code">
+mama aida hoilo oi = "ki re";bol toh mama (oi);
+        </textarea
+    >
+    <button onclick="runCode()">Run Code</button>
+    <div id="output"></div>
+    <div id="examples">
+      <h2>Examples</h2>
+      <pre>
 mama aida hoilo day = "Sunday";
 mama aida hoilo temperature = 25;
 mama aida hoilo isSunny = haw mama;
@@ -156,69 +158,75 @@ mama kam da hoilo multiply(x, y) {
 
 mama aida hoilo result = multiply(3, 4);
 bol toh mama("The result is: " + result);
-            </pre>
-        </div>
+            </pre
+      >
+    </div>
 
-        <script>
-        function runCode() {
-            // Get the output element and clear it
-            var output = document.getElementById('output');
-            output.textContent = '';
-            // Get the code from the textarea
-            var code = document.getElementById('code').value;
+    <script>
+      function runCode() {
+        // Get the output element and clear it
+        var output = document.getElementById('output')
+        output.textContent = ''
+        // Get the code from the textarea
+        var code = document.getElementById('code').value
 
-
-            const translations = {
-                'mama aida hoilo': 'let', // Variable declaration
-                'bol toh mama': 'console.log', // Print to console
-                'kisuina mama': 'null', // Null value
-                'haw mama': 'true', // Boolean true value
-                'nah mama': 'false', // Boolean false value
-                'jodi mama': 'if', // If condition
-                'nah hoile mama': 'else if', // Else if condition
-                'akdom e nah hoile': 'else', // Else condition
-                'jotokhon porjonto mama': 'while', // While loop
-                'thamis mama': 'break', // Break statement
-                'tarpor er tah dekh': 'continue', // Continue statement
-                // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
-                'mama kam da hoilo' : 'function', // Function declaration
-                'de toh mama' : 'return', // Return statement
-            };
-
-            const translateKeywordToJS = (keyword) => {
-                return translations[keyword] || keyword;
-            };
-
-            const convertToJS = (sourceCode) => {
-                Object.keys(translations).forEach(keyword => {
-                    // Use a regex to match whole words only to prevent partial replacements
-                    const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-                    sourceCode = sourceCode.replace(regex, translations[keyword]);
-                });
-                return sourceCode;
-            };
-
-            // Convert the code to JavaScript
-            code = convertToJS(code);
-
-            // Run the code and capture the output
-            var output;
-            try {
-                output = eval(code);
-            } catch (error) {
-                output = error;
-            }
-
-            // Display the output
-            console.log = function (message) {
-                // Get the output element
-                var output = document.getElementById('output');
-
-                // Append the message to the output element
-                output.textContent += message + '\n';
-            };
+        const translations = {
+          'mama aida hoilo': 'let', // Variable declaration
+          'bol toh mama': 'console.log', // Print to console
+          'kisuina mama': 'null', // Null value
+          'haw mama': 'true', // Boolean true value
+          'nah mama': 'false', // Boolean false value
+          'jodi mama': 'if', // If condition
+          'nah hoile mama': 'else if', // Else if condition
+          'akdom e nah hoile': 'else', // Else condition
+          'jotokhon porjonto mama': 'while', // While loop
+          'thamis mama': 'break', // Break statement
+          'tarpor er tah dekh': 'continue', // Continue statement
+          // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+          'mama kam da hoilo': 'function', // Function declaration
+          'de toh mama': 'return', // Return statement'por por mama': '++', // Increment
+          'kome kome mama': '--', // Decrement
+          'chesta kor mama': 'try', // Try block
+          'catch mama': 'catch', // Catch block for exceptions
+          'mama file ta khol': 'fs.openSync', // File open (Assuming Node.js with 'fs' module)
+          'mama file e likh': 'fs.writeFileSync', // Write to file
+          'mama file por': 'fs.readFileSync', // Read from file
+          'khoj mama': 'search', // Search or find operation
         }
-    </script>
-    </body>
 
+        const translateKeywordToJS = (keyword) => {
+          return translations[keyword] || keyword
+        }
+
+        const convertToJS = (sourceCode) => {
+          Object.keys(translations).forEach((keyword) => {
+            // Use a regex to match whole words only to prevent partial replacements
+            const regex = new RegExp(`\\b${keyword}\\b`, 'g')
+            sourceCode = sourceCode.replace(regex, translations[keyword])
+          })
+          return sourceCode
+        }
+
+        // Convert the code to JavaScript
+        code = convertToJS(code)
+
+        // Run the code and capture the output
+        var output
+        try {
+          output = eval(code)
+        } catch (error) {
+          output = error
+        }
+
+        // Display the output
+        console.log = function (message) {
+          // Get the output element
+          var output = document.getElementById('output')
+
+          // Append the message to the output element
+          output.textContent += message + '\n'
+        }
+      }
+    </script>
+  </body>
 </html>
