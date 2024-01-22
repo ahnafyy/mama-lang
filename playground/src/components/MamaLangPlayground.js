@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { VStack, Button, Text, Box, useToast } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import AceEditor from 'react-ace';
-import 'ace-builds/src-min-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai';
+import './../syntax/mama-language'
+
 
 const MamaPlayground = () => {
   const [code, setCode] = useState('// Default Hello, World! code\nbol toh mama("Hello, World!");');
@@ -109,7 +110,7 @@ const MamaPlayground = () => {
       </motion.div>
       <Box>
         <AceEditor
-          mode="javascript"
+          mode="mama" // Use the custom Ace mode
           theme="monokai"
           width="100%"
           height="300px"
@@ -130,5 +131,4 @@ const MamaPlayground = () => {
     </VStack>
   );
 };
-
 export default MamaPlayground;
