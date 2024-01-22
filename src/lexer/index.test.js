@@ -57,6 +57,28 @@ describe('Tokenizer', () => {
         ]);
     });
 
+    test('Tokenizes Function calls', () => {
+        const sourceCode = 'mama kam da hoilo jog(a,b){ de toh mama (a+b)}';
+        const tokens = tokenize(sourceCode);
+        expect(tokens).toEqual([
+            { type: TokenType.KEYWORD, value: 'mama kam da hoilo' },
+            { type: TokenType.IDENTIFIER, value: 'jog' },
+            { type: TokenType.PUNCTUATION, value: '(' },
+            { type: TokenType.IDENTIFIER, value: 'a' },
+            { type: TokenType.PUNCTUATION, value: ',' },
+            { type: TokenType.IDENTIFIER, value: 'b' },
+            { type: TokenType.PUNCTUATION, value: ')' },
+            { type: TokenType.PUNCTUATION, value: '{' },
+            { type: TokenType.KEYWORD, value: 'de toh mama' },
+            { type: TokenType.PUNCTUATION, value: '(' },
+            { type: TokenType.IDENTIFIER, value: 'a' },
+            { type: TokenType.OPERATOR, value: '+' },
+            { type: TokenType.IDENTIFIER, value: 'b' },
+            { type: TokenType.PUNCTUATION, value: ')' },
+            { type: TokenType.PUNCTUATION, value: '}' }
+        ]);
+    });
+
     test('Throws error on invalid syntax', () => {
         const sourceCode = null;
         expect(() => tokenize(sourceCode)).toThrow(Error);
