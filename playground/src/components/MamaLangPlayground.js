@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { VStack, Button, Text, Box, Input, useToast } from '@chakra-ui/react';
-import MonacoEditor from 'react-monaco-editor';
+import { VStack, Button, Text, Box, useToast } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import AceEditor from 'react-ace';
+import 'ace-builds/src-min-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 const MamaPlayground = () => {
   const [code, setCode] = useState('// Default Hello, World! code\nbol toh mama("Hello, World!");');
@@ -40,26 +42,26 @@ const MamaPlayground = () => {
   const convertToJS = (sourceCode) => {
     const translations = {
       'mama aida hoilo': 'let', // Variable declaration
-          'bol toh mama': 'console.log', // Print to console
-          'kisuina mama': 'null', // Null value
-          'haw mama': 'true', // Boolean true value
-          'nah mama': 'false', // Boolean false value
-          'jodi mama': 'if', // If condition
-          'nah hoile mama': 'else if', // Else if condition
-          'akdom e nah hoile': 'else', // Else condition
-          'jotokhon porjonto mama': 'while', // While loop
-          'thamis mama': 'break', // Break statement
-          'tarpor er tah dekh': 'continue', // Continue statement
-          // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
-          'mama kam da hoilo': 'function', // Function declaration
-          'de toh mama': 'return', // Return statement'por por mama': '++', // Increment
-          'kome kome mama': '--', // Decrement
-          'chesta kor mama': 'try', // Try block
-          'catch mama': 'catch', // Catch block for exceptions
-      //    'mama file ta khol': 'fs.openSync', // File open (Assuming Node.js with 'fs' module)
-        //  'mama file e likh': 'fs.writeFileSync', // Write to file
-       //   'mama file por': 'fs.readFileSync', // Read from file
-          'khoj mama': 'search', // Search or find operation
+      'bol toh mama': 'console.log', // Print to console
+      'kisuina mama': 'null', // Null value
+      'haw mama': 'true', // Boolean true value
+      'nah mama': 'false', // Boolean false value
+      'jodi mama': 'if', // If condition
+      'nah hoile mama': 'else if', // Else if condition
+      'akdom e nah hoile': 'else', // Else condition
+      'jotokhon porjonto mama': 'while', // While loop
+      'thamis mama': 'break', // Break statement
+      'tarpor er tah dekh': 'continue', // Continue statement
+      // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+      'mama kam da hoilo': 'function', // Function declaration
+      'de toh mama': 'return', // Return statement'por por mama': '++', // Increment
+      'kome kome mama': '--', // Decrement
+      'chesta kor mama': 'try', // Try block
+      'catch mama': 'catch', // Catch block for exceptions
+      // 'mama file ta khol': 'fs.openSync', // File open (Assuming Node.js with 'fs' module)
+      // 'mama file e likh': 'fs.writeFileSync', // Write to file
+      // 'mama file por': 'fs.readFileSync', // Read from file
+      'khoj mama': 'search', // Search or find operation
     };
 
     Object.entries(translations).forEach(([keyword, translation]) => {
@@ -94,20 +96,6 @@ const MamaPlayground = () => {
     return consoleLogMessages.join('\n');
   };
 
-  const handleEditorDidMount = (editor, monaco) => {
-    monaco.languages.registerCompletionItemProvider('javascript', {
-      provideCompletionItems: () => {
-        return {
-          suggestions: [
-            { label: 'console', kind: monaco.languages.CompletionItemKind.Module, insertText: 'console' },
-            { label: 'log', kind: monaco.languages.CompletionItemKind.Function, insertText: 'log' },
-            // Add more suggestions as needed
-          ],
-        };
-      },
-    });
-  };
-
   return (
     <VStack align="stretch" spacing={4} p={4} maxW="800px" m="auto">
       <motion.div
@@ -120,18 +108,14 @@ const MamaPlayground = () => {
         </Text>
       </motion.div>
       <Box>
-        <MonacoEditor
+        <AceEditor
+          mode="javascript"
+          theme="monokai"
           width="100%"
-          height="300"
-          language="javascript"
-          theme="vs-dark"
+          height="300px"
           value={code}
-          options={{
-            wordWrap: 'bounded',
-            automaticLayout: true,
-          }}
           onChange={setCode}
-          editorDidMount={handleEditorDidMount}
+          editorProps={{ $blockScrolling: true }}
         />
       </Box>
       <Button colorScheme="teal" onClick={runCode} isLoading={isRunning}>
