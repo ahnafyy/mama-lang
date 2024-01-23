@@ -47,7 +47,7 @@ const convertToJS = (sourceCode) => {
 const runMamaLang = (filename) => {
   // Check if the filename is valid
   if (!filename || filename.startsWith('--')) {
-    console.error('Mama filer name tah teh ektu dekh mama! Na likhe thakle kisu toh likh mama!')
+    console.error('Mama file er name tah teh ektu dekh mama! Na likhe thakle kisu toh likh mama!')
     return
   }
   const sourceCode = fs.readFileSync(filename, 'utf8')
