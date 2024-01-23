@@ -1,6 +1,6 @@
 {
   "name": "mama-lang",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "mama aida akta heavvyyy joss akta programming language mama",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "format": "prettier --write ."
   },
   "bin": {
-    "mama": "./src/cli.js"
+    "mama": "./cli.js"
   },
   "repository": {
     "type": "git",

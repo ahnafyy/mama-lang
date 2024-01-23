@@ -8,7 +8,10 @@ I grew up in Dhaka, Bangladesh 🇧🇩, where "Mama" 🗣️, which literally t
 So when I saw this: bhai-lang https://github.com/DulLabs/bhai-lang 💡, I was inspired to write my own implementation!
 To start with right now we just convert `.mama` files to `.js` and then run them with `node` and so anything that you could do in javascript land you can do it in mama lang.
 
+## Future State 🚀
+
 I am however playing around with the idea of making its own lexer, interpreter and parser so it can just be its own thing!
+If you want to work on it the code is inside `mama-lang_v2` directory!
 
 Feel free to open up PR(s) and contribute! 😄
 

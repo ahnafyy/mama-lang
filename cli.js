@@ -19,9 +19,6 @@ const translations = {
   'kome kome mama': '--', // Decrement
   'chesta kor mama': 'try', // Try block
   'catch mama': 'catch', // Catch block for exceptions
-  'mama file ta khol': 'fs.openSync', // File open (Assuming Node.js with 'fs' module)
-  'mama file e likh': 'fs.writeFileSync', // Write to file
-  'mama file por': 'fs.readFileSync', // Read from file
   'khoj mama': 'search', // Search or find operation
   // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
 }
