@@ -1,63 +1,70 @@
 #!/usr/bin/env node
-const fs = require('fs');
+const fs = require('fs')
 
 const translations = {
-    'mama aida hoilo': 'let', // Variable declaration
-    'bol toh mama': 'console.log', // Print to console
-    'kisuina mama': 'null', // Null value
-    'haw mama': 'true', // Boolean true value
-    'nah mama': 'false', // Boolean false value
-    'jodi mama': 'if', // If condition
-    'nah hoile mama': 'else if', // Else if condition
-    'akdom e nah hoile': 'else', // Else condition
-    'jotokhon porjonto mama': 'while', // While loop
-    'thamis mama': 'break', // Break statement
-    'tarpor er tah dekh': 'continue', // Continue statement
-    // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
-    'mama kam da hoilo': 'function', // Function declaration
-    'de toh mama' : 'return' // Return statement
-  };
+  'mama aida hoilo': 'let', // Variable declaration
+  'bol toh mama': 'console.log', // Print to console
+  'kisuina mama': 'null', // Null value
+  'haw mama': 'true', // Boolean true value
+  'nah mama': 'false', // Boolean false value
+  'jodi mama': 'if', // If condition
+  'nah hoile mama': 'else if', // Else if condition
+  'akdom e nah hoile': 'else', // Else condition
+  'jotokhon porjonto mama': 'while', // While loop
+  'thamis mama': 'break', // Break statement
+  'tarpor er tah dekh': 'continue', // Continue statement
+  'mama kam da hoilo': 'function', // Function declaration
+  'de toh mama': 'return', // Return statement
+  'por por mama': '++', // Increment
+  'kome kome mama': '--', // Decrement
+  'chesta kor mama': 'try', // Try block
+  'catch mama': 'catch', // Catch block for exceptions
+  'mama file ta khol': 'fs.openSync', // File open (Assuming Node.js with 'fs' module)
+  'mama file e likh': 'fs.writeFileSync', // Write to file
+  'mama file por': 'fs.readFileSync', // Read from file
+  'khoj mama': 'search', // Search or find operation
+  // ... other keywords as needed (Mama tui jodi aida aro kisu add korte chas mama, akta PR open kor mama!)
+}
 
 const createKeywordsRegex = () => {
-  const keywords = Object.keys(translations).map(keyword =>
-    keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  );
-  const pattern = `^(?:${keywords.join('|')})$`;
-  return new RegExp(pattern);
-};
-
+  const keywords = Object.keys(translations).map((keyword) =>
+    keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+  )
+  const pattern = `^(?:${keywords.join('|')})$`
+  return new RegExp(pattern)
+}
 
 const translateKeywordToJS = (keyword) => {
-  return translations[keyword] || keyword;
-};
+  return translations[keyword] || keyword
+}
 
 const convertToJS = (sourceCode) => {
-  Object.keys(translations).forEach(keyword => {
+  Object.keys(translations).forEach((keyword) => {
     // Use a regex to match whole words only to prevent partial replacements
-    const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-    sourceCode = sourceCode.replace(regex, translations[keyword]);
-  });
-  return sourceCode;
-};
+    const regex = new RegExp(`\\b${keyword}\\b`, 'g')
+    sourceCode = sourceCode.replace(regex, translations[keyword])
+  })
+  return sourceCode
+}
 
 const runMamaLang = (filename) => {
-    // Check if the filename is valid
+  // Check if the filename is valid
   if (!filename || filename.startsWith('--')) {
-    console.error('Mama filer name tah teh ektu dekh mama! Na likhe thakle kisu toh likh mama!');
-    return;
+    console.error('Mama filer name tah teh ektu dekh mama! Na likhe thakle kisu toh likh mama!')
+    return
   }
-  const sourceCode = fs.readFileSync(filename, 'utf8');
-  const jsCode = convertToJS(sourceCode, translations);
+  const sourceCode = fs.readFileSync(filename, 'utf8')
+  const jsCode = convertToJS(sourceCode, translations)
 
-  eval(jsCode);
-};
+  eval(jsCode)
+}
 
-const filename = process.argv[2];
-runMamaLang(filename);
+const filename = process.argv[2]
+runMamaLang(filename)
 
 module.exports = {
   createKeywordsRegex,
   translateKeywordToJS,
   convertToJS,
-  runMamaLang
-};
+  runMamaLang,
+}

@@ -1,1 +1,1 @@
-// Mama amra aikhane interpreter banabo mama. 
+// Mama amra aikhane interpreter banabo mama.

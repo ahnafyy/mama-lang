@@ -4,7 +4,8 @@
   "description": "mama aida akta heavvyyy joss akta programming language mama",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write ."
   },
   "bin": {
     "mama": "./src/cli.js"
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/ahnafyy/mama-lang#readme",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4"
   }
 }
