@@ -72,4 +72,12 @@ describe('MamaLang Translator', () => {
     const expectedJsCode = 'This is a comment. let x = 5; // This is another comment'
     expect(jsCode).toBe(expectedJsCode)
   })
+
+  // Writing tests for functions
+  it('should handle the function declaration and return value', () => {
+    const sourceCode = 'mama kam da hoilo jog(a,b){ de toh mama (a+b);}'
+    const jsCode = convertToJS(sourceCode)
+    const expectedJsCode = 'function jog(a,b){ return (a+b);}'
+    expect(jsCode).toBe(expectedJsCode)
+  })
 })
