@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { VStack, Button, Text, Box, useToast } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import AceEditor from 'react-ace'
-import { convertToJS, executeCode } from '../lib/mamaLanguage'
 import 'ace-builds/src-noconflict/theme-monokai'
+
+// importing mamaLanguage Features and Syntax
+import { convertToJS, executeCode } from '../lib/mamaLanguage'
 import './../syntax/mama-language'
 
 const MamaPlayground = () => {
@@ -16,6 +18,7 @@ const MamaPlayground = () => {
   useEffect(() => {
     // Run the default code on component mount
     runCode()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) // Empty dependency array ensures this effect runs only once
 
   const runCode = () => {
@@ -60,8 +63,8 @@ const MamaPlayground = () => {
           value={code}
           onChange={setCode}
           editorProps={{ $blockScrolling: true }}
-          padding={15}
           fontSize={16}
+          style={{ padding: '0.5rem 0.5rem 0.5rem 1rem' }}
         />
       </Box>
       <Button colorScheme="teal" onClick={runCode} isLoading={isRunning}>
