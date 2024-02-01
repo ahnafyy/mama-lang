@@ -1,26 +1,26 @@
 // mama-language.js
-import ace from 'ace-builds/src-noconflict/ace';
-import 'ace-builds/src-noconflict/mode-javascript';
+import ace from 'ace-builds/src-noconflict/ace'
+import 'ace-builds/src-noconflict/mode-javascript'
 
 ace.define('ace/mode/mama', (require, exports, module) => {
-  const oop = require('ace/lib/oop');
-  const TextMode = require('ace/mode/text').Mode;
+  const oop = require('ace/lib/oop')
+  const TextMode = require('ace/mode/text').Mode
 
-  const HighlightRules = require('./mama-language-highlight-rules').MamaHighlightRules;
+  const HighlightRules = require('./mama-language-highlight-rules').MamaHighlightRules
 
-  const Mode = function() {
-    this.HighlightRules = HighlightRules;
-  };
-  oop.inherits(Mode, TextMode);
+  const Mode = function () {
+    this.HighlightRules = HighlightRules
+  }
+  oop.inherits(Mode, TextMode)
 
-  exports.Mode = Mode;
-});
+  exports.Mode = Mode
+})
 
 ace.define('ace/mode/mama-language-highlight-rules', (require, exports, module) => {
-  const oop = require('ace/lib/oop');
-  const TextHighlightRules = require('ace/mode/text_highlight_rules').TextHighlightRules;
+  const oop = require('ace/lib/oop')
+  const TextHighlightRules = require('ace/mode/text_highlight_rules').TextHighlightRules
 
-  const MamaHighlightRules = function() {
+  const MamaHighlightRules = function () {
     this.$rules = {
       start: [
         {
@@ -69,11 +69,10 @@ ace.define('ace/mode/mama-language-highlight-rules', (require, exports, module) 
         },
         // Add more rules for other elements
       ],
-    };
-  };
+    }
+  }
 
+  oop.inherits(MamaHighlightRules, TextHighlightRules)
 
-  oop.inherits(MamaHighlightRules, TextHighlightRules);
-
-  exports.MamaHighlightRules = MamaHighlightRules;
-});
+  exports.MamaHighlightRules = MamaHighlightRules
+})

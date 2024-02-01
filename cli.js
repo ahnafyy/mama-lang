@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const translations = require('./playground_v2/src/lib/mamaTranslations')
+const { translations } = require('./lib/grammer')
 
 const createKeywordsRegex = () => {
   const keywords = Object.keys(translations).map((keyword) =>
@@ -16,7 +16,6 @@ const translateKeywordToJS = (keyword) => {
 
 const convertToJS = (sourceCode) => {
   Object.keys(translations).forEach((keyword) => {
-    // Use a regex to match whole words only to prevent partial replacements
     const regex = new RegExp(`\\b${keyword}\\b`, 'g')
     sourceCode = sourceCode.replace(regex, translations[keyword])
   })
@@ -24,15 +23,18 @@ const convertToJS = (sourceCode) => {
 }
 
 const runMamaLang = (filename) => {
-  // Check if the filename is valid
   if (!filename || filename.startsWith('--')) {
     console.error('Mama file er name tah teh ektu dekh mama! Na likhe thakle kisu toh likh mama!')
     return
   }
-  const sourceCode = fs.readFileSync(filename, 'utf8')
-  const jsCode = convertToJS(sourceCode, translations)
 
-  eval(jsCode)
+  try {
+    const sourceCode = fs.readFileSync(filename, 'utf8')
+    const jsCode = convertToJS(sourceCode)
+    eval(jsCode)
+  } catch (error) {
+    console.error('Error executing MamaLang code:', error.message)
+  }
 }
 
 const filename = process.argv[2]
